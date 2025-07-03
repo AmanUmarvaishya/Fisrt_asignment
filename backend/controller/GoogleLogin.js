@@ -8,7 +8,7 @@ require("dotenv").config();
 const googleLogin = async (req, res) => {
   try {
     const { code } = req.query;
-    console.log(code);
+  
     const googleRes = await oauth2client.getToken(code);
     oauth2client.setCredentials(googleRes.tokens);
     const userRes = await axios.get(
@@ -20,7 +20,7 @@ const googleLogin = async (req, res) => {
     const { date } = userRes.headers;
     console.log(date);
     let user = await UserModel.findOne({ email });
-    console.log(user);
+  
     if (!user) {
       user = await UserModel.create({ name, email, date });
     }
