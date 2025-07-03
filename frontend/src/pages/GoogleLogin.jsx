@@ -14,8 +14,8 @@ function GoogleLogin() {
         const token = result.data.token;
         const obj = { email, name, token };
         localStorage.setItem("user-info", JSON.stringify(obj));
-        console.log(result.data.user);
-        console.log(token);
+     
+        
         navigate("/home");
       }
     } catch (error) {
